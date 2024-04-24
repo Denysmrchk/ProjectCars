@@ -1,33 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgba(140, 140, 140, 0.9);
+          /*rgb(203 213 225);*/
+  color: black;
+  margin: 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+}
+.main-list-category {
+  margin-top: 15px;
+  display: flex;
+  padding-bottom: 10px;
+}
+/*.main-list-category li {*/
+/*  padding: 10px;*/
+/*  border: 1px solid black;*/
+/*  margin-right: 15px;*/
+
+/*}*/
+.main-list-category li {
+  transition: background-color 0.27s ease-in-out, color 0.20s ease-in-out ,border-radius 0.22s ease-in-out;
+}
+.main-list-category li.selected {
+  border: 1px solid white;
+  color: white;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+
+.max-width {
+  @apply max-w-[1440px] mx-auto;
+}
+
+.padding-x {
+  @apply sm:px-16 px-6;
+}
+
+.padding-y {
+  @apply py-4;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInOutTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fadeInOutTop {
+  animation: fadeInOutTop 1s ease-in-out;
 }
