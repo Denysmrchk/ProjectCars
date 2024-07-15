@@ -1,11 +1,7 @@
 # ProjectCars
 <ul>
-  <li>State змінних реалізовано через Mobx, де це було потрібно</li>
-  <li>Стилізація --- Tailwind CSS</li>
-  <li>Варто відзначити логіку аукціону, в якій ти маєш обмежений час для ставки, опонент, який має середній ліміт по ціні авто, логіка кнопок</li>
+  <li>State management implemented using MobX where necessary</li>
+  <li>Styling handled with Tailwind CSS, HeroIcon, Swiper</li>
+  <li>Additionally, the project is available for viewing on GitHub Pages: https://project-cars-9m42t95sb-denysmrchks-projects.vercel.app/</li>
 </ul>
-<p>P.S. проект на стадії "не дороблений"</p>
-<img src="/public/screenshots/scr1.png" alt="Screenshot project">
-<img src="/public/screenshots/src2.png" alt="Screenshot project">
-<img src="/public/screenshots/src3.png" alt="Screenshot project">
-<img src="/public/screenshots/scr4.png" alt="Screenshot project">
+<p>P.S. Project is in an "unfinished" stage</p>
