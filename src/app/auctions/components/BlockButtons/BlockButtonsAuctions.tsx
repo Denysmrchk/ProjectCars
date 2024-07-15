@@ -46,6 +46,7 @@ export const BlockButtonsAuction = observer(() => {
   };
 
   useEffect(() => {
+    setDisabledSkipButton(false)
     setDisabledBidButton(arrayAuctionCars[currentIndexCar].auctionStatus === 'ended');
     if (arrayAuctionCars[currentIndexCar].auctionStatus == 'running') {
       setDisabledSkipButton(bidderName === 'player');
