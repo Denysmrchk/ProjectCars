@@ -5,3 +5,6 @@
   <li>Additionally, the project is available for viewing on GitHub Pages: https://project-cars-9m42t95sb-denysmrchks-projects.vercel.app/</li>
 </ul>
 <p>P.S. Project is in an "unfinished" stage</p>
+![Screenshot project](/public/screenshots/Screenshot_1.png)
+![Screenshot project](/public/screenshots/Screenshot_2.png)
+![Screenshot project](/public/screenshots/Screenshot_3.png)
