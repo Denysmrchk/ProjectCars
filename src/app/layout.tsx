@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import React from 'react';
 import { Navbar } from '@/components';
-import NavigationLine from '@/components/NavigationLine/NavigationLine';
 import { ThemeProvider } from '@/components/сontext/theme/ThemeContext';
 import { NotificationMessage } from '@/components/notifications/ToastContainer/ToastContainer';
 
