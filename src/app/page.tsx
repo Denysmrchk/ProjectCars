@@ -15,7 +15,7 @@ function Home() {
 
   return (
     <main className="w-full flex wrapper-content">
-      <div className="flex flex-col w-2/5 min-w-[200px] h-[83vh] m-2.5 dark:text-gray-200">
+      <div className="flex flex-col w-2/5 min-w-[200px] max-w-[550px] h-[83vh] m-2.5 dark:text-gray-200">
         <PlayerAchievements />
         <div className="flex flex-col bg-white rounded-lg p-5 grow min-h-[200px] dark:bg-neutral-600">
           <div className="border-b-2 mb-4 w-full">

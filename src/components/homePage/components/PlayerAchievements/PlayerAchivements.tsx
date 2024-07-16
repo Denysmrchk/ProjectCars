@@ -2,7 +2,7 @@ import { CustomBulletChart } from '@/components/charts/CustomBulletChart';
 
 export const PlayerAchievements = () => {
   return (
-    <div className="flex flex-col justify-between min-h-[350px] bg-white rounded-lg p-5 mb-4 dark:bg-neutral-600">
+    <div className="flex flex-col justify-between min-h-[550px] bg-white rounded-lg p-5 mb-4 dark:bg-neutral-600">
       <div className="flex min-h-fit w-full">
         <div className="border-b-2 mb-4 w-full">
           <p className="text-lg">Player Achievements</p>

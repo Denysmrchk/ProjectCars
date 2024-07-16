@@ -20,10 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <div className="bg-gray-300 dark:bg-gray-background h-fit min-h-screen pt-[72px]">
+          <div className="bg-gray-300 dark:bg-gray-background h-fit min-h-screen pt-[110px]">
             <Navbar />
             <NotificationMessage />
-              <NavigationLine />
               <div className="flex justify-center">{children}</div>
           </div>
         </ThemeProvider>
