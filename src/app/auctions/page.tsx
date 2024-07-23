@@ -16,8 +16,8 @@ const Auction = () => {
   }
 
   return (
-    <main className="w-full flex flex-col relative gap-5">
-      <div className="dark:bg-neutral-600 bg-white w-full flex justify-center sticky z-0 top-[30px] my-2.5">
+    <main className="w-full flex flex-col relative">
+      <div className="dark:bg-neutral-600 bg-white w-full flex justify-center sticky z-0 top-[120px] my-2.5">
         <AuctionBlock />
       </div>
       <AuctionList />

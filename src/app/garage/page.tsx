@@ -16,7 +16,6 @@ function Garage() {
     fetchRequest,
   } = garageManage;
 
-  console.log('garage', fetchRequest, isChangedGarageList, !fetchRequest || isChangedGarageList);
   useEffect(() => {
     if (!fetchRequest || isChangedGarageList) {
       fetchUserCars();

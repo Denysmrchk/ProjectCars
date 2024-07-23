@@ -13,19 +13,20 @@ export const MessagesBlock = observer(() => {
     messagesOfCars,
     fetchUserCars,
     loading,
+    fetchRequest,
     isChangeMessagesList,
     setIsChangeMessagesList,
-    fetchRequest,
   } = garageManage;
+
   useEffect(() => {
     if (!fetchRequest || isChangeMessagesList) {
       fetchUserCars();
       setIsChangeMessagesList(false);
     }
-  }, [isChangeMessagesList]);
+  }, [fetchRequest, isChangeMessagesList]);
 
   return (
-    <div className="flex flex-col grow max-h-[83vh] max-w-3/5 !min-h-[350px] bg-white rounded-lg p-5 m-2.5 dark:bg-neutral-600 dark:text-gray-200">
+    <div className="flex flex-col grow max-h-[83vh] w-3/5 !min-h-[350px] bg-white rounded-lg p-5 m-2.5 dark:bg-neutral-600 dark:text-gray-200">
       <div className="border-b-2 mb-4 w-full">
         <p className="text-lg">Messages</p>
       </div>

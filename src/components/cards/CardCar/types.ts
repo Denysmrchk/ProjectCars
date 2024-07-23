@@ -37,6 +37,7 @@ export interface IAuctionListCard extends cardCarType {
   index: number;
   currentIndexCar: number;
   auctionStatus: string;
+  avrPrice: number;
 }
 export type fetchAllCarsType = {
   id: number;

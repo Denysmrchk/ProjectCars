@@ -22,7 +22,7 @@ export default function RootLayout({
           <div className="bg-gray-300 dark:bg-gray-background h-fit min-h-screen pt-[110px]">
             <Navbar />
             <NotificationMessage />
-              <div className="flex justify-center">{children}</div>
+            <div className="flex justify-center ">{children}</div>
           </div>
         </ThemeProvider>
       </body>

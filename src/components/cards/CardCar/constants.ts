@@ -11,6 +11,6 @@ export const carComments = [
   'Certified pre-owned with a comprehensive warranty included. Buy with confidence knowing this car meets high standards.',
 ];
 
-export const NotificationTextPriceOnSale = `Your car has been listed for sale. Offers will be sent to your messages.<br>*depending on the price you set, a buyer may not be found at all.`;
+export const NotificationTextPriceOnSale = `Your car has been listed for sale. Offers will be sent to your messages.<br>*offer will appear depending on the price, if the price is too high, they may not appear at all.`;
 
 export const NotificationTextNewMessage = `You have list in your messages`;

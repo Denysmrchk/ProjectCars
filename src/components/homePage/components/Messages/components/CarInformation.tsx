@@ -1,15 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { CustomBulletChart } from '@/components/charts/CustomBulletChart';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { ICarInformation } from '@/components/homePage/components/Messages/components/types';
+import { observer } from 'mobx-react-lite';
 export const CarInformation: FC<ICarInformation> = ({ car }) => {
   const [isOpenCarInformation, setIsOpenCarInformation] = useState(false);
   const toggleCarInformation = () => {
     setIsOpenCarInformation(!isOpenCarInformation);
   };
-  const onClickPay = () => {};
-  const onClickCancel = () => {};
+  useEffect(() => {
+    setIsOpenCarInformation(false);
+  }, [car.odometer]);
   return (
     <div className="flex flex-col h-fit">
       <div

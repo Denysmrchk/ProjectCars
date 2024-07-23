@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { moneyOperation } from '@/components/mobx/MoneyOperation';
@@ -19,28 +19,39 @@ export const Receipt = ({
 }) => {
   const [isOpenReceipt, setIsOpenReceipt] = useState(false);
   const { valueMoney, setChangeWallet } = moneyOperation;
-  const { setIsChangedGarageList, changeMessagesList } = garageManage;
+  const { setIsChangedGarageList, deleteMessage, changeSalesHistoryList, addCarToGarage } =
+    garageManage;
   const toggleReceipt = () => {
     setIsOpenReceipt(!isOpenReceipt);
   };
   const receiptTotal = Math.floor(priceCar * 1.1) + 100;
   const onClickPay = () => {
     if (valueMoney > receiptTotal) {
-      changeMessagesList(odometerCar);
+      deleteMessage(odometerCar);
       setChangeWallet('minus', receiptTotal);
-      fetchCar.putCarInGarage(car).then(() => setIsChangedGarageList(true));
+      fetchCar.putCarInGarage(car.id).then(() => {
+        setIsChangedGarageList(true);
+        addCarToGarage(car);
+      });
     }
   };
   const onClickCancel = () => {
-    changeMessagesList(odometerCar);
+    deleteMessage(odometerCar);
     fetchCar.deleteCarFromMessages(car.id);
   };
   const handleClickSell = () => {
-    changeMessagesList(odometerCar);
+    if (car.priceOnSale) {
+      fetchCar.putCarSalesHistory(car.id, car.priceOnSale - priceCar);
+      changeSalesHistoryList(odometerCar, car.priceOnSale - priceCar);
+    }
+    deleteMessage(odometerCar);
     setIsChangedGarageList(true);
-    fetchCar.deleteCarFromMessages(car.id);
     if (car.priceOnSale) setChangeWallet('plus', car.priceOnSale);
   };
+
+  useEffect(() => {
+    setIsOpenReceipt(false);
+  }, [odometerCar]);
   return (
     <div className="flex flex-col">
       <div

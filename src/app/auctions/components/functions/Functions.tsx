@@ -18,7 +18,7 @@ export const calcPriceCar = ({ odometer, condition, avrPrice }: calcPriceOfCarPr
 
 export const RandomPriceAuction = (value: number): number => {
   const randomMultiplier = Math.random() * 0.8 + 0.5;
-  const cheapCar = Math.random() * 0.5 + 0.5;
+  const cheapCar = Math.random() * 0.5 + 0.3;
   const randomPrice = value > 3000 ? value * randomMultiplier : value * cheapCar;
   return parseFloat(randomPrice.toFixed(2));
 };

@@ -33,7 +33,6 @@ export const TypeGarageCard = observer(
     let carOnSaleBoolean =
       garageList[index].message === 'onSale' || garageList[index].message === 'Order to buy';
     const pricePercent = (priceOnSale / priceCar) * 1.75 * 100;
-    console.log(garageList[index]);
     const handleClickOutside = (event: React.MouseEvent) => {
       if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
         setIsOpenPopUp(false);

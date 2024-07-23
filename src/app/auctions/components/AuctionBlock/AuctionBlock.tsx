@@ -12,17 +12,13 @@ export const AuctionBlock = observer(() => {
         <LoadingSpin className="h-[350px]" />
       ) : (
         <>
-          <div className="flex grow py-5">
-            <CardCar
-                {...arrayAuctionCars[currentIndexCar]}
-                AuctionCard={true}
-                index={currentIndexCar}
-            />
-          </div>
+          <CardCar
+            {...arrayAuctionCars[currentIndexCar]}
+            AuctionCard={true}
+            index={currentIndexCar}
+          />
           <div className="border-l-[10px] border-gray-300 dark:border-gray-background h-full"></div>
-          <div className="flex py-5">
           <CardAuctionController />
-          </div>
         </>
       )}
     </div>

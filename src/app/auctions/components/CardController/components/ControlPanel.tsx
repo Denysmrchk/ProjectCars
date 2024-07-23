@@ -24,38 +24,23 @@ export const ControlPanel = observer(() => {
   } = auctionActions;
 
   const [endAuction, setEndAuction] = useState(false);
+  const [messageAuction, setMessageAuction] = useState('');
   const intervalRef = useRef<any>(null);
   const intervalChart = useRef<any>(null);
   const { setNotificationOnPage } = appStore;
-  const { setIsChangeMessagesList } = garageManage;
+  const { setIsChangeMessagesList, changeMessageList } = garageManage;
   const { fetching } = useFetching(
     async () => {
       await fetchCar.postCar(
         { ...arrayAuctionCars[currentIndexCar], price: currentValueAuction },
         'toPayment',
-        methodArray.getRandomElementOfArray(congratulationsMessagesAuction),
+        messageAuction,
       );
     },
     { showNotification: true },
   );
   const randomDelay = Math.floor(Math.random() * 1550) + 1000;
   const [timer, setTimer] = useState(0);
-
-  useEffect(() => {
-    if (arrayAuctionCars[currentIndexCar].auctionStatus === 'running') {
-      intervalRef.current = setInterval(() => {
-        if (currentValueAuction < priceCarAuction) {
-          setCurrentValueAuction(currentValueAuction + 50);
-          setBidder('opponent');
-        } else {
-          clearInterval(intervalRef.current);
-        }
-      }, randomDelay);
-    } else {
-      clearInterval(intervalRef.current);
-    }
-    return () => clearInterval(intervalRef.current);
-  }, [currentValueAuction]);
 
   useEffect(() => {
     setTimer(0);
@@ -71,28 +56,41 @@ export const ControlPanel = observer(() => {
           }
         });
       }, 100);
-      return () => {
-        clearInterval(intervalChart.current);
-      };
+      intervalRef.current = setInterval(() => {
+        if (currentValueAuction < priceCarAuction) {
+          setCurrentValueAuction(currentValueAuction + 50);
+          setBidder('opponent');
+        } else {
+          clearInterval(intervalRef.current);
+        }
+      }, randomDelay);
+    } else {
+      clearInterval(intervalRef.current);
+      clearInterval(intervalChart.current);
     }
-    if (
-      arrayAuctionCars[currentIndexCar].auctionStatus == 'ended' &&
-      bidderName === 'player' &&
-      arrayAuctionCars[currentIndexCar].category !== 'toPayment'
-    ) {
-      fetching();
-      setNotificationOnPage('Home', true);
-      setIsChangeMessagesList(true);
-      setCarAuctionMessage('toPayment', currentIndexCar, currentValueAuction);
-    }
-    return () => clearInterval(intervalChart.current);
-  }, [arrayAuctionCars[currentIndexCar].auctionStatus, currentValueAuction]);
+    return () => {
+      clearInterval(intervalRef.current);
+      clearInterval(intervalChart.current);
+    };
+  }, [currentValueAuction, currentIndexCar]);
 
   useEffect(() => {
     if (endAuction) {
       setCarAuctionStatus('ended', currentIndexCar);
+      if (bidderName === 'player' && arrayAuctionCars[currentIndexCar].category !== 'toPayment') {
+        fetching();
+        setNotificationOnPage('Home', true);
+        setIsChangeMessagesList(true);
+        setCarAuctionMessage('toPayment', currentIndexCar);
+        changeMessageList(arrayAuctionCars[currentIndexCar], messageAuction, currentValueAuction);
+      }
     }
   }, [endAuction]);
+  useEffect(() => {
+    setEndAuction(false);
+    setMessageAuction(methodArray.getRandomElementOfArray(congratulationsMessagesAuction));
+  }, [currentIndexCar]);
+
   return (
     <>
       <ProgressBarAuction value={timer} />

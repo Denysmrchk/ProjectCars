@@ -64,6 +64,7 @@ const CardCar: FC<ICardCarProps> = observer(
         condition={condition}
         title={title}
         index={index}
+        avrPrice={avrPrice}
         currentIndexCar={currentIndexCar}
         auctionStatus={auctionStatus}
       />

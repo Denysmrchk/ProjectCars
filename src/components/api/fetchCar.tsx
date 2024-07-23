@@ -17,15 +17,15 @@ export default class fetchCar {
     const response = axios.get('https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage');
     return response;
   }
-  static async putCarInGarage(car: IFetchCarForUser): Promise<void> {
-    await fetch(`https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage/${car.id}`, {
+  static async putCarInGarage(id: number): Promise<void> {
+    await fetch(`https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage/${id}`, {
       method: 'PUT', // or PATCH
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ message: null, category: 'carInGarage' }),
     });
   }
-  static async putCarOnSale(car: IFetchCarForUser, message: string, price: number): Promise<void> {
-    await fetch(`https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage/${car.id}`, {
+  static async putCarOnSale(id: number, message: string, price: number): Promise<void> {
+    await fetch(`https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage/${id}`, {
       method: 'PUT', // or PATCH
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ category: 'carInGarage', message: message, priceOnSale: price }),
@@ -33,5 +33,12 @@ export default class fetchCar {
   }
   static async deleteCarFromMessages(id: number) {
     await axios.delete(`https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage/${id}`);
+  }
+  static async putCarSalesHistory(id: number, earned: number): Promise<void> {
+    await fetch(`https://6634b3649bb0df2359a26fed.mockapi.io/projectCars/garage/${id}`, {
+      method: 'PUT', // or PATCH
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ category: 'salesHistory', priceOnSale: earned, message: '' + '' }),
+    });
   }
 }
